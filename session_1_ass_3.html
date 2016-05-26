@@ -1,0 +1,49 @@
+
+<!-- Write an IIFE to validate the input provided from a form. The form consists of name, email, phone
+number and address. Here name, email and phone number are mandatory fields. Also validate that the
+given email is a valid email id using JavaScript.
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		var validateEmail = function(email) {
+			var emailFilter =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+			if (!emailFilter.test(email)) 
+				alert("Please enter a valid email.");
+			return emailFilter.test(email);	
+		};
+		var checkBlank = function(input) {
+					var inputValue = document.getElementById(input).value;
+					return (inputValue == "");
+		}
+	</script>
+</head>
+<body>
+		<form action="javascript:void(0)" method="POST" enctype="multipart/form-data">
+			<label>First Name *: <input type="text" placeholder="First name" id="firstname" onblur="(function(id){			
+				if( checkBlank(id) ){
+					alert('Please enter your first name.');
+				}			
+			})(this.id);"></label> <br/>
+			<label>Last Name *: <input type="text" placeholder="Last name" id="lastname" onblur="(function(id){			
+				if( checkBlank(id) ){
+					alert('Please enter your last name.');
+				}			
+			})(this.id);"></label> <br/>
+			<label>Email Address *: <input type="text" placeholder="Email" id="email" onchange="validateEmail(this.value)" onblur="(function(id){			
+				if( checkBlank(id) ){
+					alert('Please enter an email address.');
+				}			
+			})(this.id);"/> <br/>
+			<label>Phone Number *: <input type="text" placeholder="Phone number" id="phone" onblur="(function(id){			
+				if( checkBlank(id) ){
+					alert('Please enter a phone number.');
+				}			
+			})(this.id);"></label> <br/>
+			<label>Address: <input type="text" placeholder="Address" id="address" ></label> <br/>
+		</form>
+
+</body>
+</html>
